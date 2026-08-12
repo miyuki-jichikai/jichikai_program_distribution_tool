@@ -323,9 +323,6 @@ def write_output(template_path, output_path, all_rows):
         # フッター中央: ページ番号 (&P)
         ws.oddFooter.center.text = "&P"
 
-        # 印刷範囲: A列〜I列（データ最終行まで）※列全体指定はopenpyxlが非対応のため行範囲で指定
-        ws.print_area = f"A1:I{last_data_row}"
-
         # タイトル行: 2行目を全ページに繰り返し印刷
         ws.print_title_rows = "$2:$2"
 
@@ -392,6 +389,9 @@ def write_output(template_path, output_path, all_rows):
         ws["G1"] = f"=SUBTOTAL(9,G{DATA_START_ROW}:G{last_data_row})"
         ws["H1"] = f"=SUBTOTAL(9,H{DATA_START_ROW}:H{last_data_row})"
         ws["I1"] = f"=SUBTOTAL(9,I{DATA_START_ROW}:I{last_data_row})"
+
+        # 印刷範囲: A1〜I列のデータ最終行まで (last_data_row確定後に設定)
+        ws.print_area = f"A1:I{last_data_row}"
 
         all_sheets.append(ws)
 
