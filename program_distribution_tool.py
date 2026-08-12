@@ -42,7 +42,7 @@ from openpyxl.utils import get_column_letter
 # ------------------------------------------------------------------
 # バージョン定義 (ここだけ更新すればタイトル・GUI表示に反映される)
 # ------------------------------------------------------------------
-APP_VERSION = "1.6.0"
+APP_VERSION = "1.7.0"
 APP_TITLE = f"三幸町自治会 プログラム配布リスト生成ツール v{APP_VERSION}"
 
 # ------------------------------------------------------------------
@@ -494,14 +494,15 @@ class ProgramDistributionApp(tk.Tk):
         self.title(APP_TITLE)
 
         # アイコン設定（PyInstaller --onefile 対応）
+        # GUIウィンドウ左上とタスクバー両方に反映する
         try:
             if hasattr(sys, "_MEIPASS"):
-                icon_path = os.path.join(sys._MEIPASS, "app_icon.ico")
+                icon_path = os.path.join(sys._MEIPASS, "app_icon_final.ico")
             else:
                 icon_path = os.path.join(
-                    os.path.dirname(os.path.abspath(__file__)), "app_icon.ico"
+                    os.path.dirname(os.path.abspath(__file__)), "app_icon_final.ico"
                 )
-            self.iconbitmap(icon_path)
+            self.iconbitmap(default=icon_path)  # ウィンドウ左上 + タスクバー
         except Exception:
             pass
 
