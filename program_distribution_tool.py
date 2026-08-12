@@ -42,7 +42,7 @@ from openpyxl.utils import get_column_letter
 # ------------------------------------------------------------------
 # バージョン定義 (ここだけ更新すればタイトル・GUI表示に反映される)
 # ------------------------------------------------------------------
-APP_VERSION = "1.3.0"
+APP_VERSION = "1.4.0"
 APP_TITLE = f"三幸町自治会 プログラム配布リスト生成ツール v{APP_VERSION}"
 
 # ------------------------------------------------------------------
@@ -312,10 +312,13 @@ def write_output(template_path, output_path, all_rows):
 
         ws.title = label   # シートタブ名を「X区X部」にする
 
-        # 印刷ヘッダー: 奇数ページ左側に「X区X部　部長様」を設定
+        # 印刷ヘッダー: 左側に「X区X部　部長様」、中央に「プログラム・金券・記念品配布一覧」
         ws.oddHeader.left.text = f"{label}　部長様"
         ws.oddHeader.left.size = 14
         ws.oddHeader.left.font = "游ゴシック,Bold"
+        ws.oddHeader.center.text = "プログラム・金券・記念品配布一覧"
+        ws.oddHeader.center.size = 14
+        ws.oddHeader.center.font = "游ゴシック,Bold"
 
         # データ領域をクリア (DATA_START_ROW以降)
         max_r = ws.max_row
