@@ -42,7 +42,7 @@ from openpyxl.utils import get_column_letter
 # ------------------------------------------------------------------
 # バージョン定義 (ここだけ更新すればタイトル・GUI表示に反映される)
 # ------------------------------------------------------------------
-APP_VERSION = "1.4.0"
+APP_VERSION = "1.5.0"
 APP_TITLE = f"三幸町自治会 プログラム配布リスト生成ツール v{APP_VERSION}"
 
 # ------------------------------------------------------------------
@@ -319,6 +319,19 @@ def write_output(template_path, output_path, all_rows):
         ws.oddHeader.center.text = "プログラム・金券・記念品配布一覧"
         ws.oddHeader.center.size = 14
         ws.oddHeader.center.font = "游ゴシック,Bold"
+
+        # フッター中央: ページ番号 (&P)
+        ws.oddFooter.center.text = "&P"
+
+        # 印刷範囲: A列〜I列（データ最終行まで）※列全体指定はopenpyxlが非対応のため行範囲で指定
+        ws.print_area = f"A1:I{last_data_row}"
+
+        # タイトル行: 2行目を全ページに繰り返し印刷
+        ws.print_title_rows = "$2:$2"
+
+        # 枠線を印刷する
+        ws.print_options.gridLines = True
+        ws.print_options.gridLinesSet = True
 
         # データ領域をクリア (DATA_START_ROW以降)
         max_r = ws.max_row
