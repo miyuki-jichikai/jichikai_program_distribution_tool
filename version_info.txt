@@ -1,0 +1,27 @@
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=(1, 7, 0, 0),
+    prodvers=(1, 7, 0, 0),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable(
+        u'041104b0',
+        [StringStruct(u'CompanyName', u'三幸町自治会'),
+         StringStruct(u'FileDescription', u'プログラム配布リスト生成ツール'),
+         StringStruct(u'FileVersion', u'1.7.0.0'),
+         StringStruct(u'InternalName', u'jichikai_program_distribution_tool'),
+         StringStruct(u'LegalCopyright', u'Copyright 2026 久野耕司'),
+         StringStruct(u'OriginalFilename', u'jichikai_program_distribution_tool.exe'),
+         StringStruct(u'ProductName', u'三幸町自治会 プログラム配布リスト生成ツール'),
+         StringStruct(u'ProductVersion', u'1.7.0.0')])
+      ]),
+    VarFileInfo([VarStruct(u'Translation', [0x411, 1200])])
+  ]
+)
