@@ -1,1 +1,9 @@
-/data
+﻿# PyInstaller
+build/
+dist/
+
+# Inno Setup
+Output/
+
+# データファイル
+data/
